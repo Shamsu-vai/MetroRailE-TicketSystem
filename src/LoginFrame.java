@@ -31,8 +31,8 @@ public class LoginFrame extends JFrame {
         loginLabel.setFont(font);
         //loginLabel.setIcon(logo);
         loginLabel.setText("LOGIN");
-        loginLabel.setBounds(115,30,200,50);
-        loginLabel.setOpaque(true);
+        loginLabel.setBounds(115,30,120,50);
+        //loginLabel.setOpaque(true);
 
         nameField = new JTextField();
         nameField.setBounds(75,125,200,25);

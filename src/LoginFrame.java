@@ -4,6 +4,7 @@ import java.awt.geom.RoundRectangle2D;
 
 public class LoginFrame extends JFrame {
     private JLayeredPane backLayer;
+    private JButton login;
     private JPanel mainLayer;
     private JLabel imageLabel;
     private JLabel loginLabel;
@@ -40,10 +41,17 @@ public class LoginFrame extends JFrame {
         passwordField = new JPasswordField();
         passwordField.setBounds(75,200,200,25);
 
+        login = new JButton("Log in");
+        login.setFocusable(false);
+        login.setBounds(120,250,80,40);
+
+
         mainLayer = new JPanel();
         mainLayer.setLayout(null);
         mainLayer.setBounds(225,100,350,400);
         mainLayer.setBackground(new Color(54, 69, 79,200));
+
+        mainLayer.add(login);
         mainLayer.add(loginLabel);
         mainLayer.add(nameField);
         mainLayer.add(passwordField);

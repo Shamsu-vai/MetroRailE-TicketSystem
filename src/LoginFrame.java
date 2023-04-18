@@ -56,7 +56,7 @@ public class LoginFrame extends JFrame {
         this.setResizable(false);
         this.setLayout(null);
         this.setUndecorated(true);
-        this.setShape(new RoundRectangle2D.Double(0, 0, 800, 600, 50, 50));
+        //this.setShape(new RoundRectangle2D.Double(0, 0, 800, 600, 50, 50));
         this.setSize(800,600);
         this.setLocationRelativeTo(null);
         this.setVisible(true);

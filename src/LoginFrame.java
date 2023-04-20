@@ -42,7 +42,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 
         nlabel=new JLabel();
         nlabel.setText("User ID:");
-        nlabel.setBounds(18,125,73,30);
+        nlabel.setBounds(18,125,75,30);
         nlabel.setFont(new Font("Arial",Font.BOLD,19));
         nlabel.setForeground(Color.WHITE);
 
@@ -61,16 +61,20 @@ public class LoginFrame extends JFrame implements ActionListener {
         passwordField.setBounds(120,180,200,30);
         passwordField.setBorder(BorderFactory.createEmptyBorder());
         passwordField.setFont(new Font("Arial",Font.BOLD,20));
-
+        //Log in Button
         login = new JButton("Log in");
         login.setFont(new Font("Arial",Font.BOLD,19));
         login.setFocusable(false);
         login.setBounds(60,250,100,40);
-
+        login.setBorder(BorderFactory.createEmptyBorder());
+        login.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        //Back Button
         back = new JButton("Back");
         back.setFont(new Font("Arial",Font.BOLD,19));
         back.setFocusable(false);
         back.setBounds(180,250,100,40);
+        back.setBorder(BorderFactory.createEmptyBorder());
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
 
         mainLayer = new JPanel();

@@ -66,11 +66,13 @@ public class LoginFrame extends JFrame implements ActionListener {
         login.setFont(new Font("Arial",Font.BOLD,19));
         login.setFocusable(false);
         login.setBounds(60,250,100,40);
+        login.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
         back = new JButton("Back");
         back.setFont(new Font("Arial",Font.BOLD,19));
         back.setFocusable(false);
         back.setBounds(180,250,100,40);
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
 
         mainLayer = new JPanel();

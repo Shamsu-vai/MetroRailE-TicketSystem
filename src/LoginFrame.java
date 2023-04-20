@@ -8,16 +8,16 @@ public class LoginFrame extends JFrame implements ActionListener {
     private JLayeredPane backLayer;
     private JButton login,back;
     private JPanel mainLayer;
-    private JLabel imageLabel,loginLabel,label;
+    private JLabel imageLabel,loginLabel,nlabel,plabel;
     private JTextField nameField;
     private JPasswordField passwordField;
-    private ImageIcon metroBg;
+    private ImageIcon metroBg,logo;
     public LoginFrame(){
 
         Font font=new Font(Font.SANS_SERIF,Font.BOLD,36);
 
-        metroBg = new ImageIcon("metro rail.png");
-        ImageIcon logo = new ImageIcon("logo1.png");
+        metroBg = new ImageIcon(getClass().getResource("/images/metro rail.png"));
+        logo = new ImageIcon(getClass().getResource("/images/logo1.png"));
         this.setTitle("Metro e-ticket");
         this.setIconImage(logo.getImage());
 
@@ -40,14 +40,27 @@ public class LoginFrame extends JFrame implements ActionListener {
 
         //loginLabel.setOpaque(true);
 
-        label=new JLabel("User ID");//shamne user id ta astese na kn??
-        label.setBounds(100,125,40,20);
+        nlabel=new JLabel();
+        nlabel.setText("User ID:");
+        nlabel.setBounds(18,125,73,30);
+        nlabel.setFont(new Font("Arial",Font.BOLD,19));
+        nlabel.setForeground(Color.WHITE);
+
+        plabel=new JLabel();
+        plabel.setText("Password:");
+        plabel.setBounds(18,180,100,30);
+        plabel.setFont(new Font("Arial",Font.BOLD,19));
+        plabel.setForeground(Color.WHITE);
 
         nameField = new JTextField();
-        nameField.setBounds(115,125,200,25);
+        nameField.setBounds(120,125,200,30);
+        nameField.setBorder(BorderFactory.createEmptyBorder());
+        nameField.setFont(new Font("Arial",Font.BOLD,20));
 
         passwordField = new JPasswordField();
-        passwordField.setBounds(115,200,200,25);
+        passwordField.setBounds(120,180,200,30);
+        passwordField.setBorder(BorderFactory.createEmptyBorder());
+        passwordField.setFont(new Font("Arial",Font.BOLD,20));
 
         login = new JButton("Log in");
         login.setFont(new Font("Arial",Font.BOLD,19));
@@ -66,7 +79,8 @@ public class LoginFrame extends JFrame implements ActionListener {
         mainLayer.setBackground(new Color(54, 69, 79,200));
 
         mainLayer.add(back);
-        mainLayer.add(label);
+        mainLayer.add(plabel);
+        mainLayer.add(nlabel);
         mainLayer.add(login);
         mainLayer.add(loginLabel);
         mainLayer.add(nameField);

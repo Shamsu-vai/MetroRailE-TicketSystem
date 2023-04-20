@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.RoundRectangle2D;
 
 public class LoginFrame extends JFrame implements ActionListener {
     private JLayeredPane backLayer;
@@ -27,7 +26,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         imageLabel.setVerticalAlignment(JLabel.TOP);
 
         backLayer = new JLayeredPane();
-        backLayer.add(imageLabel);
+        //backLayer.add(imageLabel);
         backLayer.setBounds(0,0,800,600);
 
 
@@ -90,7 +89,10 @@ public class LoginFrame extends JFrame implements ActionListener {
         mainLayer.add(nameField);
         mainLayer.add(passwordField);
 
-        this.add(mainLayer);
+
+        //this.add(mainLayer);
+        backLayer.add(mainLayer);
+        backLayer.add(imageLabel);
         this.add(backLayer);
 
 

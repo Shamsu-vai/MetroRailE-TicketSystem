@@ -98,7 +98,7 @@ public class Welcome extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
+        String command = e.getActionCommand();//getSource mane ki ??
         switch (command){
             case "login":
                 this.setVisible(false);
@@ -111,6 +111,8 @@ public class Welcome extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        Welcome w = new Welcome();
-    }
+
+            Welcome w = new Welcome();//aita keno lagaisos??
+            w.setVisible(true);
+        }
 }

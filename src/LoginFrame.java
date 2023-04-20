@@ -71,6 +71,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         back.setFont(new Font("Arial",Font.BOLD,19));
         back.setFocusable(false);
         back.setBounds(180,250,100,40);
+        back.setActionCommand("back");
 
 
         mainLayer = new JPanel();
@@ -102,11 +103,18 @@ public class LoginFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
-        if(source== login){
-            
-        } else if (source==back) {
-            
+        String command = e.getActionCommand();
+        switch (command) {
+            case "back":
+                this.setVisible(false);
+                Welcome w = new Welcome();
+                break;
+            }
+
         }
-    }
+        public static void main (String[]args){
+            LoginFrame l = new LoginFrame();
+            l.setVisible(true);
+        }
+
 }

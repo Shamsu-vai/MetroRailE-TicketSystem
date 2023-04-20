@@ -9,6 +9,7 @@ public class Welcome extends JFrame implements ActionListener {
     private JLabel imageLabel, logoLabel,
             welcomeLabel,metroLabel;
     private JButton log,register,about;
+    private JPanel panel;
 
     public Welcome(){
 

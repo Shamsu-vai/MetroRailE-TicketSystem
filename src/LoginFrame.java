@@ -151,6 +151,8 @@ public class LoginFrame extends JFrame implements ActionListener {
                 }catch(Exception ex){
                 ex.printStackTrace();
                 }
+            }else {
+                JOptionPane.showMessageDialog(null, "Please fill up the form");
             }
 
 

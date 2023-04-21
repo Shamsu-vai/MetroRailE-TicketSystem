@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class LoginFrame extends JFrame implements ActionListener {
     private JLayeredPane backLayer;
@@ -11,6 +15,8 @@ public class LoginFrame extends JFrame implements ActionListener {
     private JTextField nameField;
     private JPasswordField passwordField;
     private ImageIcon metroBg,logo;
+    private String userName ;
+    private String pass;
     public LoginFrame(){
 
         Font font=new Font(Font.SANS_SERIF,Font.BOLD,36);
@@ -62,6 +68,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         passwordField.setFont(new Font("Arial",Font.BOLD,20));
         //Log in Button
         login = new JButton("Log in");
+        login.addActionListener(this);
         login.setFont(new Font("Arial",Font.BOLD,19));
         login.setFocusable(false);
         login.setBounds(60,250,100,40);
@@ -69,6 +76,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         login.setCursor(new Cursor(Cursor.HAND_CURSOR));
         //Back Button
         back = new JButton("Back");
+        back.addActionListener(this);
         back.setFont(new Font("Arial",Font.BOLD,19));
         back.setFocusable(false);
         back.setBounds(180,250,100,40);
@@ -109,10 +117,50 @@ public class LoginFrame extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        if(source== login){
-            
+        if(source== login) {
+            if (!nameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
+                try {
+                    userName = "user:" + nameField.getText().toLowerCase();
+                    pass = "pass:" + passwordField.getText();
+
+                    String line = null;
+                    int lineNum = 0;
+                    BufferedReader reader = new BufferedReader(new FileReader("userlogin.txt"));
+
+                    while ((line = reader.readLine()) != null) {
+                        lineNum++;
+                    }
+                    reader.close();
+                    for (int i = 0; i < lineNum; i++) {
+                        line = Files.readAllLines(Paths.get("userlogin.txt")).get(i);
+                        if (line.equals(userName)) {
+                            String line2 = Files.readAllLines(Paths.get("userlogin.txt")).get((i + 1));
+                            if (line2.equals(pass)) {
+                                JOptionPane.showMessageDialog(null, "Welcome " + nameField.getText() + " hope" +
+                                        " you have a wonderful journey");
+                                break;
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Incorrect Password");
+                            }
+                        }
+                    }
+                } catch(FileNotFoundException ex){
+                ex.printStackTrace();
+                } catch(IOException ex){
+                ex.printStackTrace();
+                }catch(Exception ex){
+                ex.printStackTrace();
+                }
+            }
+
+
         } else if (source==back) {
-            
+            this.setVisible(false);
+            Welcome w = new Welcome();
         }
+    }
+
+    public static void main(String[] args) {
+        LoginFrame lf = new LoginFrame();
     }
 }

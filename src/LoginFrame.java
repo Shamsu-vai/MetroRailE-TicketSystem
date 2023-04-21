@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.RoundRectangle2D;
 
 public class LoginFrame extends JFrame implements ActionListener {
     private JLayeredPane backLayer;
@@ -27,7 +26,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         imageLabel.setVerticalAlignment(JLabel.TOP);
 
         backLayer = new JLayeredPane();
-        backLayer.add(imageLabel);
+        //backLayer.add(imageLabel);
         backLayer.setBounds(0,0,800,600);
 
 
@@ -42,7 +41,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 
         nlabel=new JLabel();
         nlabel.setText("User ID:");
-        nlabel.setBounds(18,125,73,30);
+        nlabel.setBounds(18,125,75,30);
         nlabel.setFont(new Font("Arial",Font.BOLD,19));
         nlabel.setForeground(Color.WHITE);
 
@@ -61,17 +60,20 @@ public class LoginFrame extends JFrame implements ActionListener {
         passwordField.setBounds(120,180,200,30);
         passwordField.setBorder(BorderFactory.createEmptyBorder());
         passwordField.setFont(new Font("Arial",Font.BOLD,20));
-
+        //Log in Button
         login = new JButton("Log in");
         login.setFont(new Font("Arial",Font.BOLD,19));
         login.setFocusable(false);
         login.setBounds(60,250,100,40);
-
+        login.setBorder(BorderFactory.createEmptyBorder());
+        login.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        //Back Button
         back = new JButton("Back");
         back.setFont(new Font("Arial",Font.BOLD,19));
         back.setFocusable(false);
         back.setBounds(180,250,100,40);
-        back.setActionCommand("back");
+        back.setBorder(BorderFactory.createEmptyBorder());
+        back.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
 
         mainLayer = new JPanel();
@@ -87,7 +89,10 @@ public class LoginFrame extends JFrame implements ActionListener {
         mainLayer.add(nameField);
         mainLayer.add(passwordField);
 
-        this.add(mainLayer);
+
+        //this.add(mainLayer);
+        backLayer.add(mainLayer);
+        backLayer.add(imageLabel);
         this.add(backLayer);
 
 
@@ -103,18 +108,11 @@ public class LoginFrame extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
-        switch (command) {
-            case "back":
-                this.setVisible(false);
-                Welcome w = new Welcome();
-                break;
-            }
-
+        Object source = e.getSource();
+        if(source== login){
+            
+        } else if (source==back) {
+            
         }
-        public static void main (String[]args){
-            LoginFrame l = new LoginFrame();
-            l.setVisible(true);
-        }
-
+    }
 }

@@ -112,7 +112,7 @@ public class Welcome extends JFrame implements ActionListener {
 
     public static void main(String[] args) {
 
-            Welcome w = new Welcome();//aita keno lagaisos??
-            w.setVisible(true);
+            Welcome w = new Welcome();
+
         }
 }

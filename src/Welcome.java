@@ -2,9 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Map;
 
-public class Welcome extends JFrame implements ActionListener {
+public class Welcome extends JFrame implements ActionListener , MouseListener {
     private JLayeredPane mainLayer;
     private JLabel imageLabel, logoLabel,
             welcomeLabel,metroLabel;
@@ -49,6 +51,7 @@ public class Welcome extends JFrame implements ActionListener {
 
         // Log in button
         log = new JButton();
+        log.addMouseListener(this);
         log.addActionListener(this);
         log.setActionCommand("login");
         log.setText("LOG IN");
@@ -59,6 +62,7 @@ public class Welcome extends JFrame implements ActionListener {
 
         // Register button
         register = new JButton();
+        register.addMouseListener(this);
         register.addActionListener(this);
         register.setActionCommand("register");
         register.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
@@ -69,6 +73,7 @@ public class Welcome extends JFrame implements ActionListener {
 
         // About button
         about = new JButton();
+        about.addMouseListener(this);
         about.addActionListener(this);
         about.setActionCommand("about");
         about.setText("ABOUT");
@@ -115,4 +120,43 @@ public class Welcome extends JFrame implements ActionListener {
             Welcome w = new Welcome();
 
         }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        Object source = e.getSource();
+        if (source == log){
+            log.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+        } else if (source == register) {
+            register.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+        } else if (source == about) {
+            about.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
+        }
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        Object source = e.getSource();
+        if (source == log){
+            log.setBorder(BorderFactory.createEmptyBorder());
+        }else if (source == register) {
+            register.setBorder(BorderFactory.createEmptyBorder());
+        } else if (source == about) {
+            about.setBorder(BorderFactory.createEmptyBorder());
+        }
+    }
 }

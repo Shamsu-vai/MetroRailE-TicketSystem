@@ -12,13 +12,13 @@ public class Register extends JFrame implements ActionListener, MouseListener {
     private JTextField fnField,lnField,GField,dobField,nidField,phnField,addrField,nField,pField;
 
     public Register(){
-        rlabel =new JLabel("Register:");
+        rlabel =new JLabel("REGISTER");
         rlabel.setBounds(34,45,259,46);
         rlabel.setFont(new Font(Font.SANS_SERIF,Font.BOLD,40));
         this.add(rlabel);
 
         fnlabel=new JLabel("First Name :");
-        fnlabel.setBounds(34,132,114,24);
+        fnlabel.setBounds(34,132,120,24);
         fnlabel.setFont( new Font(Font.DIALOG,  Font.BOLD, 20));
         this.add(fnlabel);
 
@@ -36,12 +36,12 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         lnField.setBounds(378,167,283,52);
         lnField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
         this.add(lnField);
-        
+
         GLabel=new JLabel("Gender :");
         GLabel.setBounds(707,132,114,24);
         GLabel.setFont( new Font(Font.DIALOG,  Font.BOLD, 20));
         this.add(GLabel);
-        
+
         GField=new JTextField();
         GField.setBounds(707,167,283,52);
         GField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
@@ -108,6 +108,8 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         this.add(pField);
 
         submitbutton = new JButton("Submit");
+        submitbutton.addActionListener(this);
+        submitbutton.addMouseListener(this);
         submitbutton.setFont(new Font("Arial",Font.BOLD,19));
         submitbutton.setFocusable(false);
         submitbutton.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -115,6 +117,8 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         this.add(submitbutton);
 
         backbutton = new JButton("Back");
+        backbutton.addActionListener(this);
+        backbutton.addMouseListener(this);
         backbutton.setFont(new Font("Arial",Font.BOLD,19));
         backbutton.setFocusable(false);
         backbutton.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -138,7 +142,13 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        if (source == submitbutton){
 
+        } else if (source == backbutton) {
+            this.setVisible(false);
+            Welcome w = new Welcome();
+        }
     }
 
     @Override
@@ -157,12 +167,12 @@ public class Register extends JFrame implements ActionListener, MouseListener {
     }
 
     @Override
-    public void mouseEntered(MouseEvent e) {///////Kaj kortese na keno??
+    public void mouseEntered(MouseEvent e) {
         Object source = e.getSource();
         if (source == submitbutton){
-            submitbutton.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.CYAN,Color.CYAN,null,null));
+            submitbutton.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.CYAN,Color.CYAN));
         }else if (source == backbutton){
-            backbutton.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.CYAN,Color.CYAN,null,null));
+            backbutton.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED,Color.CYAN,Color.CYAN));
         }
     }
 

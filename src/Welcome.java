@@ -29,10 +29,10 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
         imageLabel.setIcon(welcomeBG);
         imageLabel.setBounds(0,0,980,720);
 
-        //top logo image label             ai portion ta kn lagaisili??
-//        logoLabel = new JLabel();
-//        logoLabel.setBounds(580,110,500,500);
-//        logoLabel.setIcon(logo);
+          //top logo image label
+          //logoLabel = new JLabel();
+          //logoLabel.setBounds(580,110,500,500);
+          //logoLabel.setIcon(logo);
 
         this.setIconImage(logo.getImage());
 
@@ -112,7 +112,10 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
                 this.setVisible(false);
                 LoginFrame logFrame = new LoginFrame();
             break;
-            case"register":break;
+            case"register":
+                this.setVisible(false);
+                Register register = new Register();
+                break;
             case "about":break;
             default:
         }
@@ -125,19 +128,13 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
         }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
+    public void mouseClicked(MouseEvent e) {}
 
     @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
+    public void mousePressed(MouseEvent e) {}
 
     @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     @Override
     public void mouseEntered(MouseEvent e) {

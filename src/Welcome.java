@@ -22,12 +22,12 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
 
         //main layered pane as container
         mainLayer = new JLayeredPane();
-        mainLayer.setSize(1512,982);
+        mainLayer.setSize(980,720);
 
         //Background image label
         imageLabel = new JLabel();
         imageLabel.setIcon(welcomeBG);
-        imageLabel.setBounds(0,0,1512,982);
+        imageLabel.setBounds(0,0,980,720);
 
         //top logo image label
         logoLabel = new JLabel();
@@ -37,15 +37,15 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
         //Welcome text label
         welcomeLabel = new JLabel();
         welcomeLabel.setText("WELCOME");
-        welcomeLabel.setBounds(617,455,277,80);
+        welcomeLabel.setBounds(352,220,277,80);
         welcomeLabel.setFont(new Font(Font.SANS_SERIF,Font.BOLD,50));
         //welcomeLabel.setOpaque(true);
 
-        //Metro text lebel
+        //Metro text label
         metroLabel = new JLabel();
         metroLabel.setText("METRO RAIL E-TICKETING");
         metroLabel.setFont(new Font(Font.SANS_SERIF,Font.BOLD,48));
-        metroLabel.setBounds(420,557,625,80);
+        metroLabel.setBounds(178,360,625,80);
         //metroLabel.setOpaque(true);
 
 
@@ -56,7 +56,7 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
         log.setActionCommand("login");
         log.setText("LOG IN");
         log.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-        log.setBounds(450,690,132,36);
+        log.setBounds(238,518,136,36);
         log.setFocusable(false);
         log.setBorder(BorderFactory.createEmptyBorder());
 
@@ -68,7 +68,7 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
         register.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
         register.setText("REGISTER");
         register.setBorder(BorderFactory.createEmptyBorder());
-        register.setBounds(650,690,136,36);
+        register.setBounds(422,518,136,36);
         register.setFocusable(false);
 
         // About button
@@ -79,7 +79,7 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
         about.setText("ABOUT");
         about.setFocusable(false);
         about.setFont(new Font(Font.SANS_SERIF,Font.BOLD,20));
-        about.setBounds(850,690,130,36);
+        about.setBounds(606,518,136,36);
         about.setFocusable(false);
         about.setBorder(BorderFactory.createEmptyBorder());
 
@@ -95,9 +95,10 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
 
         // Welcome frame
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setTitle("WELCOME");
         this.setResizable(false);
         this.setLayout(null);
-        this.setSize(1512,982);
+        this.setSize(980,720);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
     }

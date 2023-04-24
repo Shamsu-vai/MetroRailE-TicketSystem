@@ -119,7 +119,6 @@ public class LoginFrame extends JFrame implements ActionListener , MouseListener
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-        if(source== login){
 
             if(source== login) {
                 if (!nameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
@@ -160,7 +159,7 @@ public class LoginFrame extends JFrame implements ActionListener , MouseListener
                 }
 
             }
-            } else if (source==back) {
+            else if (source==back) {
 
                 this.setVisible(false);
                 Welcome w = new Welcome();

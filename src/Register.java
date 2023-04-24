@@ -5,16 +5,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Register extends JFrame implements ActionListener, MouseListener {
     private JButton submitbutton,backbutton;
     private JLabel rlabel,fnlabel,lnLabel,GLabel,dobLabel,nidLabel,phnLabel,addrLabel,nLabel,pLabel;
     private JTextField fnField,lnField,GField,dobField,nidField,phnField,addrField,nField,pField;
+    private String fName,lName,gender,dob,nid,phone,address,nationality,payment;
 
     public Register(){
         rlabel =new JLabel("REGISTER");
-        rlabel.setBounds(34,45,259,46);
-        rlabel.setFont(new Font(Font.SANS_SERIF,Font.BOLD,40));
+        rlabel.setBounds(34,45,259,48);
+        rlabel.setFont(new Font(Font.SANS_SERIF,Font.BOLD,48));
         this.add(rlabel);
 
         fnlabel=new JLabel("First Name :");
@@ -144,6 +149,16 @@ public class Register extends JFrame implements ActionListener, MouseListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == submitbutton){
+
+            File file = new File("userlogin.txt");
+
+            try {
+                BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+                writer.append("ll");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+
 
         } else if (source == backbutton) {
             this.setVisible(false);

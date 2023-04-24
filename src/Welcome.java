@@ -29,10 +29,12 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
         imageLabel.setIcon(welcomeBG);
         imageLabel.setBounds(0,0,980,720);
 
-        //top logo image label
-        logoLabel = new JLabel();
-        logoLabel.setBounds(580,110,500,500);
-        logoLabel.setIcon(logo);
+        //top logo image label             ai portion ta kn lagaisili??
+//        logoLabel = new JLabel();
+//        logoLabel.setBounds(580,110,500,500);
+//        logoLabel.setIcon(logo);
+
+        this.setIconImage(logo.getImage());
 
         //Welcome text label
         welcomeLabel = new JLabel();

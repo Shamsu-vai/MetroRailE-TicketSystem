@@ -205,7 +205,7 @@ public class LoginFrame extends JFrame implements ActionListener , MouseListener
         if (source == login){
             login.setBorder(BorderFactory.createEmptyBorder());
         } else if (source == back) {
-            back   .setBorder(BorderFactory.createEmptyBorder());
+            back.setBorder(BorderFactory.createEmptyBorder());
         }
     }
 }

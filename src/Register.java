@@ -162,9 +162,6 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         Object source = e.getSource();
 
         if (source == submitbutton){
-            gender = (String) genderCmb.getSelectedItem();
-            System.out.println(gender);
-            System.out.println("buttons work");
 
             if (fnField.getText()!=null && lnField.getText()!=null && ((String)genderCmb.getSelectedItem()!=null) &&
                     dobField.getText()!=null && nidField.getText()!=null && phnField.getText()!=null &&
@@ -194,7 +191,10 @@ public class Register extends JFrame implements ActionListener, MouseListener {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+                JOptionPane.showMessageDialog(null,"Registration Successful\nProceed to Home Page","Massage",JOptionPane.INFORMATION_MESSAGE);
 
+            }else {
+                JOptionPane.showMessageDialog(null,"Please Fill up the Form","Warning",JOptionPane.WARNING_MESSAGE);
             }
 
 

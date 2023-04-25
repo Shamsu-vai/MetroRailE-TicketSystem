@@ -1,6 +1,3 @@
-user:shams soad
-male
 *************************************
-user:shamsf dafa
-male
+*********Metro Rail UserData*********
 *************************************

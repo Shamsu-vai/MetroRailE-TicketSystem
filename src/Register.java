@@ -13,10 +13,10 @@ import java.io.IOException;
 public class Register extends JFrame implements ActionListener, MouseListener {
     private JButton submitbutton,backbutton;
     private JLabel rlabel,fnlabel,lnLabel,GLabel,dobLabel,nidLabel,phnLabel,addrLabel,nLabel,pLabel;
-    private JTextField fnField,lnField,GField,dobField,nidField,phnField,addrField,nField,pField;
+    private JTextField fnField,lnField,dobField,nidField,phnField,addrField,nField,pField;
     private String fName,lName,userName,gender,dob,nid,phone,address,nationality,payment;
     private int intNID , intPhn;
-    private String [] genders = {"none","male","female"};
+    private String [] genders = {"None","Male","Female"};
     private JComboBox genderCmb;
 
     public Register(){
@@ -32,7 +32,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
         fnField=new JTextField();
         fnField.setBounds(34,167,283,52);
-        fnField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        fnField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
         this.add(fnField);
 
         lnLabel=new JLabel("Last Name :");
@@ -42,7 +42,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
         lnField=new JTextField();
         lnField.setBounds(378,167,283,52);
-        lnField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        lnField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
         this.add(lnField);
 
         GLabel=new JLabel("Gender :");
@@ -54,7 +54,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         genderCmb.setSelectedIndex(0);
         genderCmb.addActionListener(this);
         genderCmb.setBounds(707,167,283,52);
-        genderCmb.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        genderCmb.setFont(new Font(Font.SERIF,Font.PLAIN,24));
         this.add(genderCmb);
 
         //GField=new JTextField();
@@ -71,7 +71,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         dobField.addMouseListener(this);
         dobField.setText("yyyy/mm/dd");
         dobField.setBounds(34,337,283,52);
-        dobField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        dobField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
         this.add(dobField);
 
         nidLabel=new JLabel("NID/BirthCertificate:");
@@ -81,7 +81,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
         nidField=new JTextField();
         nidField.setBounds(378,337,283,52);
-        nidField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        nidField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
         this.add(nidField);
 
         phnLabel=new JLabel("Phone Number :");
@@ -91,7 +91,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
         phnField=new JTextField();
         phnField.setBounds(707,337,283,52);
-        phnField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        phnField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
         this.add(phnField);
 
         addrLabel=new JLabel("Address:");
@@ -101,7 +101,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
         addrField=new JTextField();
         addrField.setBounds(34,506,283,52);
-        addrField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        addrField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
         this.add(addrField);
 
         nLabel=new JLabel("Nationality:");
@@ -111,7 +111,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
         nField=new JTextField();
         nField.setBounds(378,506,283,52);
-        nField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        nField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
         this.add(nField);
 
         pLabel=new JLabel("Payment:");
@@ -121,7 +121,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
         pField=new JTextField();
         pField.setBounds(707,506,283,52);
-        pField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        pField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
         this.add(pField);
 
         submitbutton = new JButton("Submit");
@@ -160,13 +160,18 @@ public class Register extends JFrame implements ActionListener, MouseListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
+
         if (source == submitbutton){
+            gender = (String) genderCmb.getSelectedItem();
+            System.out.println(gender);
             System.out.println("buttons work");
+
             if (fnField.getText()!=null && lnField.getText()!=null && ((String)genderCmb.getSelectedItem()!=null) &&
                     dobField.getText()!=null && nidField.getText()!=null && phnField.getText()!=null &&
-                    addrField.getText()!=null && nField.getText().isEmpty() && pField.getText().isEmpty()){
+                    addrField.getText()!=null && !nField.getText().isEmpty() && !pField.getText().isEmpty()){
 
-                File file = new File("userlogin.txt");
+                submitbutton.setEnabled(false);
+
                 System.out.println("writer pls write");
                 fName = fnField.getText();
                 lName = lnField.getText();
@@ -181,16 +186,19 @@ public class Register extends JFrame implements ActionListener, MouseListener {
                 payment = pField.getText();
 
                 try {
-                    BufferedWriter writer = new BufferedWriter(new FileWriter("userlogin.txt"));
-                    writer.append(userName);
-                    writer.append(gender);
-                    writer.append("*************************************");
+                    FileWriter writer= new FileWriter("userlogin.txt",true);
+                    writer.append(userName+"\n");
+                    writer.append(gender+"\n");
+                    writer.append("*************************************"+"\n");
                     writer.close();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
 
             }
+
+
+
 
         } else if (source == backbutton) {
             this.setVisible(false);

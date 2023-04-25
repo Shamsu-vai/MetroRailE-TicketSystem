@@ -12,7 +12,6 @@ import java.io.IOException;
 
 public class Register extends JFrame implements ActionListener, MouseListener {
     private JButton submitbutton,backbutton;
-    private JComboBox Nationality,Gender;
     private JLabel rlabel,fnlabel,lnLabel,GLabel,dobLabel,nidLabel,phnLabel,addrLabel,nLabel,pLabel;
     private JTextField fnField,lnField,GField,dobField,nidField,phnField,addrField,nField,pField;
     private String fName,lName,gender,dob,nid,phone,address,nationality,payment;
@@ -48,11 +47,10 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         GLabel.setFont( new Font(Font.DIALOG,  Font.BOLD, 20));
         this.add(GLabel);
 
-        String gender[]={"Male","Female","Third gender"};
-        Gender = new JComboBox(gender);
-        Gender.setBounds(707,167,283,52);
-        Gender.setFont(new Font(Font.SERIF,Font.PLAIN,20));
-        this.add(Gender);
+        GField=new JTextField();
+        GField.setBounds(707,167,283,52);
+        GField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        this.add(GField);
 
         dobLabel=new JLabel("DOB :");
         dobLabel.setBounds(34,297,114,24);
@@ -99,11 +97,10 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         nLabel.setFont( new Font(Font.DIALOG,  Font.BOLD, 20));
         this.add(nLabel);
 
-        String nationality[]={"Bangladesh","USA","India"};
-        Nationality = new JComboBox(nationality);
-        Nationality.setBounds(378,506,283,52);
-        Nationality.setFont(new Font(Font.SERIF,Font.PLAIN,20));
-        this.add(Nationality);
+        nField=new JTextField();
+        nField.setBounds(378,506,283,52);
+        nField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        this.add(nField);
 
         pLabel=new JLabel("Payment:");
         pLabel.setBounds(707,473,160,24);
@@ -150,18 +147,6 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       String FirstN = fnField.getText().toLowerCase();
-       String LastN = lnField.getText();
-       String Nid = nidField.getText();
-       String Phone = phnField.getText();
-       String address= addrField.getText();
-
-       if(FirstN.isEmpty() && LastN.isEmpty() && Nid.isEmpty() && Phone.isEmpty() && address.isEmpty()){
-           JOptionPane.showMessageDialog(null, "Please fill all of the fields.", "Warning!", JOptionPane.WARNING_MESSAGE);
-       }
-
-
-
         Object source = e.getSource();
         if (source == submitbutton){
 
@@ -169,7 +154,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
             try {
                 BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-                writer.append("ll");//ki aita??
+                writer.append("ll");
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

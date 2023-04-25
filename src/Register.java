@@ -14,7 +14,8 @@ public class Register extends JFrame implements ActionListener, MouseListener {
     private JButton submitbutton,backbutton;
     private JLabel rlabel,fnlabel,lnLabel,GLabel,dobLabel,nidLabel,phnLabel,addrLabel,nLabel,pLabel;
     private JTextField fnField,lnField,GField,dobField,nidField,phnField,addrField,nField,pField;
-    private String fName,lName,gender,dob,nid,phone,address,nationality,payment;
+    private String fName,lName,userName,gender,dob,nid,phone,address,nationality,payment;
+    private int intNID , intPhn;
     private String [] genders = {"none","male","female"};
     private JComboBox genderCmb;
 
@@ -160,16 +161,36 @@ public class Register extends JFrame implements ActionListener, MouseListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == submitbutton){
+            System.out.println("buttons work");
+            if (fnField.getText()!=null && lnField.getText()!=null && ((String)genderCmb.getSelectedItem()!=null) &&
+                    dobField.getText()!=null && nidField.getText()!=null && phnField.getText()!=null &&
+                    addrField.getText()!=null && nField.getText().isEmpty() && pField.getText().isEmpty()){
 
-            File file = new File("userlogin.txt");
+                File file = new File("userlogin.txt");
+                System.out.println("writer pls write");
+                fName = fnField.getText();
+                lName = lnField.getText();
+                userName = "user:"+fName+" "+lName;
+                gender = (String) genderCmb.getSelectedItem();
+                nid = nidField.getText();
+                //intNID = Integer.parseInt(nid);
+                phone = pField.getText();
+                //intPhn = Integer.parseInt(phone);
+                address = addrField.getText();
+                nationality = addrField.getText();
+                payment = pField.getText();
 
-            try {
-                BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-                writer.append("ll");
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+                try {
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("userlogin.txt"));
+                    writer.append(userName);
+                    writer.append(gender);
+                    writer.append("*************************************");
+                    writer.close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
             }
-
 
         } else if (source == backbutton) {
             this.setVisible(false);

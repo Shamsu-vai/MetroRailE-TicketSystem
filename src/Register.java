@@ -15,6 +15,8 @@ public class Register extends JFrame implements ActionListener, MouseListener {
     private JLabel rlabel,fnlabel,lnLabel,GLabel,dobLabel,nidLabel,phnLabel,addrLabel,nLabel,pLabel;
     private JTextField fnField,lnField,GField,dobField,nidField,phnField,addrField,nField,pField;
     private String fName,lName,gender,dob,nid,phone,address,nationality,payment;
+    private String [] genders = {"none","male","female"};
+    private JComboBox genderCmb;
 
     public Register(){
         rlabel =new JLabel("REGISTER");
@@ -47,10 +49,17 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         GLabel.setFont( new Font(Font.DIALOG,  Font.BOLD, 20));
         this.add(GLabel);
 
-        GField=new JTextField();
-        GField.setBounds(707,167,283,52);
-        GField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
-        this.add(GField);
+        genderCmb = new JComboBox(genders);
+        genderCmb.setSelectedIndex(0);
+        genderCmb.addActionListener(this);
+        genderCmb.setBounds(707,167,283,52);
+        genderCmb.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        this.add(genderCmb);
+
+        //GField=new JTextField();
+        //GField.setBounds(707,167,283,52);
+        //GField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
+        //this.add(GField);
 
         dobLabel=new JLabel("DOB :");
         dobLabel.setBounds(34,297,114,24);
@@ -58,6 +67,8 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         this.add(dobLabel);
 
         dobField=new JTextField();
+        dobField.addMouseListener(this);
+        dobField.setText("yyyy/mm/dd");
         dobField.setBounds(34,337,283,52);
         dobField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
         this.add(dobField);
@@ -169,8 +180,10 @@ public class Register extends JFrame implements ActionListener, MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         Object source = e.getSource();
+        if (source == dobField) {
+            dobField.setText("");
+        }
     }
-
     @Override
     public void mousePressed(MouseEvent e) {
         Object source = e.getSource();

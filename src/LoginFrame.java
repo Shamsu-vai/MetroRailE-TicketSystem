@@ -9,17 +9,21 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class LoginFrame extends JFrame implements ActionListener , MouseListener {
     private JLayeredPane backLayer;
     private JButton login,back;
     private JPanel mainLayer;
-    private JLabel imageLabel,loginLabel,nlabel,plabel;
+    private JLabel imageLabel,loginLabel,nlabel,plabel,dateLabel,dayLabel;
     private JTextField nameField;
     private JPasswordField passwordField;
     private ImageIcon metroBg,logo;
     private String userName ;
     private String pass;
+    private JPanel dateLayer;
+    private SimpleDateFormat dayFormat,dateFormat;
     public LoginFrame(){
 
         Font font=new Font(Font.SANS_SERIF,Font.BOLD,36);
@@ -27,6 +31,29 @@ public class LoginFrame extends JFrame implements ActionListener , MouseListener
         logo = new ImageIcon(getClass().getResource("/images/logo1.png"));
         this.setTitle("Metro e-ticket");
         this.setIconImage(logo.getImage());
+
+        //Layer for Date
+        dateLayer = new JPanel();
+        dateLayer.setBounds(0,537,800,28);
+        dateLayer.setBackground(new Color(126, 230, 228));
+        dateLayer.setForeground(Color.BLUE);
+
+        //For date
+        dayFormat = new SimpleDateFormat("EEEE");
+        dayLabel = new JLabel();
+        dayLabel.setFont(new Font("Ink Free",Font.BOLD,22));
+        String day = dayFormat.format(Calendar.getInstance().getTime());
+        dayLabel.setText(day);
+//        dayLabel.setHorizontalAlignment(JLabel.LEFT);//why those
+        dayLabel.setVerticalTextPosition(JLabel.TOP);//aren't working
+        dateLayer.add(dayLabel);
+
+        dateFormat = new SimpleDateFormat("dd, MM, yyyy");
+        dateLabel =new JLabel();
+        dateLabel.setFont(new Font("Ink Free",Font.BOLD,22));
+        String date= dateFormat.format(Calendar.getInstance().getTime());
+        dateLabel.setText(date);
+        dateLayer.add(dateLabel);
 
 
         imageLabel=new JLabel();
@@ -36,7 +63,7 @@ public class LoginFrame extends JFrame implements ActionListener , MouseListener
         backLayer = new JLayeredPane();
         //backLayer.add(imageLabel);
         backLayer.setBounds(0,0,800,600);
-
+        backLayer.add(dateLayer);
 
         loginLabel = new JLabel();
         loginLabel.setFont(font);

@@ -9,10 +9,14 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class Register extends JFrame implements ActionListener, MouseListener {
     private JButton submitbutton,backbutton;
-    private JLabel rlabel,fnlabel,lnLabel,GLabel,dobLabel,nidLabel,phnLabel,addrLabel,nLabel,pLabel;
+    private JPanel dateLayer;
+    private JLabel rlabel,fnlabel,lnLabel,GLabel,dobLabel,nidLabel,phnLabel,addrLabel,nLabel,pLabel,dateLabel,dayLabel;
+    private SimpleDateFormat dayFormat,dateFormat;
     private JTextField fnField,lnField,dobField,nidField,phnField,addrField,nField,pField;
     private String fName,lName,userName,gender,dob,nid,phone,address,nationality,payment;
     private int intNID , intPhn;
@@ -20,6 +24,29 @@ public class Register extends JFrame implements ActionListener, MouseListener {
     private JComboBox genderCmb;
 
     public Register(){
+        //Layer for Date
+        dateLayer = new JPanel();
+        dateLayer.setBounds(0,703,1024,28);
+        dateLayer.setBackground(new Color(126, 230, 228));
+        this.add(dateLayer);
+
+        //For date
+        dayFormat = new SimpleDateFormat("EEEE");
+        dayLabel = new JLabel();
+        dayLabel.setFont(new Font("Ink Free",Font.BOLD,22));
+        String day = dayFormat.format(Calendar.getInstance().getTime());
+        dayLabel.setText(day);
+//        dayLabel.setHorizontalAlignment(JLabel.LEFT);//why those
+        dayLabel.setVerticalTextPosition(JLabel.TOP);//aren't working
+        dateLayer.add(dayLabel);
+
+        dateFormat = new SimpleDateFormat("dd, MM, yyyy");
+        dateLabel =new JLabel();
+        dateLabel.setFont(new Font("Ink Free",Font.BOLD,22));
+        String date= dateFormat.format(Calendar.getInstance().getTime());
+        dateLabel.setText(date);
+        dateLayer.add(dateLabel);
+
         rlabel =new JLabel("REGISTER");
         rlabel.setBounds(34,45,259,48);
         rlabel.setFont(new Font(Font.SANS_SERIF,Font.BOLD,48));

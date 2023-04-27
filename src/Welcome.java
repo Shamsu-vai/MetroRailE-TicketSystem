@@ -4,12 +4,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Calendar;
 import java.util.Map;
+import java.text.SimpleDateFormat;
 
 public class Welcome extends JFrame implements ActionListener , MouseListener {
     private JLayeredPane mainLayer;
+    private JPanel dateLayer;
     private JLabel imageLabel, logoLabel,
-            welcomeLabel,metroLabel;
+            welcomeLabel,metroLabel,dateLabel,dayLabel;
+    private SimpleDateFormat dayFormat,dateFormat;
     private JButton log,register,about;
     private JPanel panel;
 
@@ -23,6 +27,12 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
         //main layered pane as container
         mainLayer = new JLayeredPane();
         mainLayer.setSize(980,720);
+
+        //Layer for Date
+        dateLayer = new JPanel();
+        dateLayer.setBounds(0,655,980,28);
+        dateLayer.setBackground(new Color(126, 230, 228));
+        mainLayer.add(dateLayer);
 
         //Background image label
         imageLabel = new JLabel();
@@ -85,6 +95,22 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
         about.setFocusable(false);
         about.setBorder(BorderFactory.createEmptyBorder());
 
+        //For date
+        dayFormat = new SimpleDateFormat("EEEE");
+        dayLabel = new JLabel();
+        dayLabel.setFont(new Font("Ink Free",Font.BOLD,22));
+        String day = dayFormat.format(Calendar.getInstance().getTime());
+        dayLabel.setText(day);
+//        dayLabel.setHorizontalAlignment(JLabel.LEFT);//why those
+        dayLabel.setVerticalTextPosition(JLabel.TOP);//aren't working
+        dateLayer.add(dayLabel);
+
+        dateFormat = new SimpleDateFormat("dd, MM, yyyy");
+        dateLabel =new JLabel();
+        dateLabel.setFont(new Font("Ink Free",Font.BOLD,22));
+        String date= dateFormat.format(Calendar.getInstance().getTime());
+        dateLabel.setText(date);
+        dateLayer.add(dateLabel);
 
         //Adding to the main layered pane
         mainLayer.add(log);

@@ -151,7 +151,7 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
 
             Welcome w = new Welcome();
 
-        }
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {}

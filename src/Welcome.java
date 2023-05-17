@@ -49,15 +49,15 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
         //Welcome text label
         welcomeLabel = new JLabel();
         welcomeLabel.setText("WELCOME");
-        welcomeLabel.setBounds(352,220,277,80);
+        welcomeLabel.setBounds(352,50,277,80);
         welcomeLabel.setFont(new Font(Font.SANS_SERIF,Font.BOLD,50));
         //welcomeLabel.setOpaque(true);
 
         //Metro text label
         metroLabel = new JLabel();
-        metroLabel.setText("METRO RAIL E-TICKETING");
+        metroLabel.setText("METRO RAIL E-TICKETING SYSTEM");
         metroLabel.setFont(new Font(Font.SANS_SERIF,Font.BOLD,48));
-        metroLabel.setBounds(178,360,625,80);
+        metroLabel.setBounds(60,120,900,80);
         //metroLabel.setOpaque(true);
 
 

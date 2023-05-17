@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class TicketingPortal extends JFrame implements ActionListener {
 
@@ -64,6 +67,10 @@ public class TicketingPortal extends JFrame implements ActionListener {
         minus.setBounds(180,190,50,30);
         minus.setFocusable(false);
 
+        confirm = new JButton("Confirm");
+        confirm.addActionListener(this);
+        confirm.setBounds(60,260,90,30);
+
         destin = new JLabel();
         destin.setText("To: \n"+destination);
         destin.setFont(new Font("Arial",Font.BOLD,20));
@@ -122,6 +129,7 @@ public class TicketingPortal extends JFrame implements ActionListener {
         panel3.add(price);
         panel3.add(unit);
         panel3.add(total);
+        panel3.add(confirm);
 
         add(panel1);
         add(panel2);
@@ -163,6 +171,25 @@ public class TicketingPortal extends JFrame implements ActionListener {
             minus.setEnabled(false);
             ticketNumber.setEnabled(false);
             panel3.setVisible(true);
+
+        }
+        if (e.getSource()==confirm){
+            FileDialog fd = new FileDialog(this,"save",FileDialog.SAVE);
+            fd.setVisible(true);
+
+            String filename = fd.getFile();
+            String directory = fd.getDirectory();
+
+            try {
+                FileWriter fw = new FileWriter(directory+filename);
+                fw.write("        METRO RAIL E-TICKETING SYSTEM        ");
+                fw.write("\n*********************************************");
+                fw.write("\n"+user.getName()+"\n"+user.getEmail()+"\n"+user.getPhone()+"\n"+user.getAddress()+"\n"+user.getNid());
+                fw.close();
+                System.out.println("\n"+user.getName()+"\n"+user.getEmail()+"\n"+user.getPhone()+"\n"+user.getAddress()+"\n"+user.getNid());
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 }

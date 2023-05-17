@@ -172,7 +172,6 @@ public class Map extends JFrame implements ActionListener {
         dateLabel.setText(date);
         dateLayer.add(dateLabel);
 
-
         this.setVisible(true);
     }
 

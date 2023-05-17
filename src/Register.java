@@ -15,12 +15,12 @@ import java.util.Calendar;
 public class Register extends JFrame implements ActionListener, MouseListener {
     private JButton submitbutton,backbutton;
     private JPanel dateLayer;
-    private JLabel rlabel,fnlabel,lnLabel,GLabel,dobLabel,nidLabel,phnLabel,addrLabel,nLabel,pLabel,dateLabel,dayLabel;
+    private JLabel rlabel,fnlabel,lnLabel,GLabel,emailLabel,nidLabel,phnLabel,addrLabel,nLabel,pLabel,dateLabel,dayLabel;
     private SimpleDateFormat dayFormat,dateFormat;
-    private JTextField fnField,lnField,dobField,nidField,phnField,addrField,nField,pField;
-    private String fName,lName,userName,gender,dob,nid,phone,address,nationality,payment;
+    private JTextField fnField,lnField,emailField,nidField,phnField,addrField,nField,pField;
+    private String fName,lName,userName,gender,email,nid,phone,address,nationality,password;
     private int intNID , intPhn;
-    private String [] genders = {"None","Male","Female"};
+    private String [] genders = {"Gender","Male","Female"};
     private JComboBox genderCmb;
 
     public Register(){
@@ -89,17 +89,16 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         //GField.setFont(new Font(Font.SERIF,Font.PLAIN,20));
         //this.add(GField);
 
-        dobLabel=new JLabel("DOB :");
-        dobLabel.setBounds(34,297,114,24);
-        dobLabel.setFont( new Font(Font.DIALOG,  Font.BOLD, 20));
-        this.add(dobLabel);
+        emailLabel=new JLabel("Email:");
+        emailLabel.setBounds(34,297,114,24);
+        emailLabel.setFont( new Font(Font.DIALOG,  Font.BOLD, 20));
+        this.add(emailLabel);
 
-        dobField=new JTextField();
-        dobField.addMouseListener(this);
-        dobField.setText("yyyy/mm/dd");
-        dobField.setBounds(34,337,283,52);
-        dobField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
-        this.add(dobField);
+        emailField=new JTextField();
+        emailField.addMouseListener(this);
+        emailField.setBounds(34,337,283,52);
+        emailField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
+        this.add(emailField);
 
         nidLabel=new JLabel("NID/BirthCertificate:");
         nidLabel.setBounds(378,297,190,24);
@@ -141,7 +140,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         nField.setFont(new Font(Font.SERIF,Font.PLAIN,24));
         this.add(nField);
 
-        pLabel=new JLabel("Payment:");
+        pLabel=new JLabel("Password:");
         pLabel.setBounds(707,473,160,24);
         pLabel.setFont( new Font(Font.DIALOG,  Font.BOLD, 20));
         this.add(pLabel);
@@ -191,34 +190,43 @@ public class Register extends JFrame implements ActionListener, MouseListener {
         if (source == submitbutton){
 
             if (fnField.getText()!=null && lnField.getText()!=null && ((String)genderCmb.getSelectedItem()!=null) &&
-                    dobField.getText()!=null && nidField.getText()!=null && phnField.getText()!=null &&
+                    emailField.getText()!=null && nidField.getText()!=null && phnField.getText()!=null &&
                     addrField.getText()!=null && !nField.getText().isEmpty() && !pField.getText().isEmpty()){
 
                 submitbutton.setEnabled(false);
 
-                System.out.println("writer pls write");
                 fName = fnField.getText();
                 lName = lnField.getText();
                 userName = "user:"+fName+" "+lName;
+                email = emailField.getText();
+                password = pField.getText();
                 gender = (String) genderCmb.getSelectedItem();
+                phone = phnField.getText();
+                address = addrField.getText();
+                nationality = nField.getText();
                 nid = nidField.getText();
                 //intNID = Integer.parseInt(nid);
-                phone = pField.getText();
                 //intPhn = Integer.parseInt(phone);
-                address = addrField.getText();
-                nationality = addrField.getText();
-                payment = pField.getText();
+
 
                 try {
                     FileWriter writer= new FileWriter("userlogin.txt",true);
-                    writer.append(userName+"\n");
-                    writer.append(gender+"\n");
-                    writer.append("*************************************"+"\n");
+                    writer.append("\n"+userName);
+                    writer.append("\n"+password);
+                    writer.append("\n"+email);
+                    writer.append("\n"+gender);
+                    writer.append("\n"+phone);
+                    writer.append("\n"+address);
+                    writer.append("\n"+nationality);
+                    writer.append("\n"+nid);
+                    writer.append("\n*************************************");
                     writer.close();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
-                JOptionPane.showMessageDialog(null,"Registration Successful\nProceed to Home Page","Massage",JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Registration Successful\nProceed to login Page","Massage",JOptionPane.INFORMATION_MESSAGE);
+                setVisible(false);
+                new LoginFrame();
 
             }else {
                 JOptionPane.showMessageDialog(null,"Please Fill up the Form","Warning",JOptionPane.WARNING_MESSAGE);
@@ -236,9 +244,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         Object source = e.getSource();
-        if (source == dobField) {
-            dobField.setText("");
-        }
+
     }
     @Override
     public void mousePressed(MouseEvent e) {

@@ -14,6 +14,8 @@ import java.util.Calendar;
 
 public class LoginFrame extends JFrame implements ActionListener , MouseListener {
     private JLayeredPane backLayer;
+    private String name ,email ,password ,gender , phone ,  address , nationality , nid;
+    private User user;
     private JButton login,back;
     private JPanel mainLayer;
     private JLabel imageLabel,loginLabel,nlabel,plabel,dateLabel,dayLabel;
@@ -151,7 +153,7 @@ public class LoginFrame extends JFrame implements ActionListener , MouseListener
                 if (!nameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
                     try {
                         userName = "user:" + nameField.getText().toLowerCase();
-                        pass = "pass:" + passwordField.getText();
+                        pass = passwordField.getText();
 
                         String line = null;
                         int lineNum = 0;
@@ -168,6 +170,17 @@ public class LoginFrame extends JFrame implements ActionListener , MouseListener
                                 if (line2.equals(pass)) {
                                     JOptionPane.showMessageDialog(null, "Welcome " + nameField.getText() + " hope" +
                                             " you have a wonderful journey");
+                                    name=line.substring(5);
+                                    password=line2;
+                                    email=Files.readAllLines(Paths.get("userlogin.txt")).get((i + 2));
+                                    gender=Files.readAllLines(Paths.get("userlogin.txt")).get((i + 3));
+                                    phone=Files.readAllLines(Paths.get("userlogin.txt")).get((i + 4));
+                                    address=Files.readAllLines(Paths.get("userlogin.txt")).get((i + 5));
+                                    nationality=Files.readAllLines(Paths.get("userlogin.txt")).get((i + 6));
+                                    nid=Files.readAllLines(Paths.get("userlogin.txt")).get((i + 7));
+                                    user = new User(name,password,email,gender,phone,address,nationality,nid);
+                                    setVisible(false);
+                                    new Dashboard(user);
                                     break;
                                 } else {
                                     JOptionPane.showMessageDialog(null, "Incorrect Password");
@@ -232,6 +245,12 @@ public class LoginFrame extends JFrame implements ActionListener , MouseListener
             login.setBorder(BorderFactory.createEmptyBorder());
         } else if (source == back) {
             back.setBorder(BorderFactory.createEmptyBorder());
+        }
+    }
+
+    public void fetchUserData(){
+        for (int i = 0; i < 8; i++) {
+
         }
     }
 }

@@ -142,7 +142,10 @@ public class Welcome extends JFrame implements ActionListener , MouseListener {
                 this.setVisible(false);
                 Register register = new Register();
                 break;
-            case "about":break;
+            case "about":
+                this.setVisible(false);
+                About about = new About();
+                break;
             default:
         }
     }

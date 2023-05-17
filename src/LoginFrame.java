@@ -152,7 +152,7 @@ public class LoginFrame extends JFrame implements ActionListener , MouseListener
             if(source== login) {
                 if (!nameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
                     try {
-                        userName = "user:" + nameField.getText().toLowerCase();
+                        userName = nameField.getText().toLowerCase();
                         pass = passwordField.getText();
 
                         String line = null;
@@ -170,7 +170,7 @@ public class LoginFrame extends JFrame implements ActionListener , MouseListener
                                 if (line2.equals(pass)) {
                                     JOptionPane.showMessageDialog(null, "Welcome " + nameField.getText() + " hope" +
                                             " you have a wonderful journey");
-                                    name=line.substring(5);
+                                    name=line;
                                     password=line2;
                                     email=Files.readAllLines(Paths.get("userlogin.txt")).get((i + 2));
                                     gender=Files.readAllLines(Paths.get("userlogin.txt")).get((i + 3));

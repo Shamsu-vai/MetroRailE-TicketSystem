@@ -197,7 +197,7 @@ public class Register extends JFrame implements ActionListener, MouseListener {
 
                 fName = fnField.getText();
                 lName = lnField.getText();
-                userName = "user:"+fName+" "+lName;
+                userName = fName+" "+lName;
                 email = emailField.getText();
                 password = pField.getText();
                 gender = (String) genderCmb.getSelectedItem();

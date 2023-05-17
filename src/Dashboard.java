@@ -60,9 +60,6 @@ public class Dashboard extends JFrame implements ActionListener {
         setLayout(null);
         setSize(800,600);
         setLocationRelativeTo(null);
-
-        System.out.println(user.getName());
-
         setVisible(true);
 
     }
@@ -76,7 +73,7 @@ public class Dashboard extends JFrame implements ActionListener {
         if (e.getSource()==buyTicket){
             buyTicket.setEnabled(false);
             setVisible(false);
-            new Map();
+            new Map(user);
         }
     }
 }

@@ -177,7 +177,7 @@ public class Map extends JFrame implements ActionListener {
 
         confirm = new JButton("confirm");
         confirm.setFont(new Font("Arial",Font.BOLD,19));
-        confirm.setBounds(778,430,100,40);
+        confirm.setBounds(778,430,150,40);
         confirm.setFocusable(false);
         confirm.setEnabled(false);
         confirm.setVisible(false);

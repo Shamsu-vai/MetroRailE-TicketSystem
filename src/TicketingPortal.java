@@ -37,18 +37,18 @@ public class TicketingPortal extends JFrame implements ActionListener {
         iLocation = new JLabel();
         iLocation.setText("From: \n"+initLocation);
         iLocation.setFont(new Font("Arial",Font.BOLD,20));
-        iLocation.setBounds(30,70,100,50);
+        iLocation.setBounds(30,70,150,50);
 
         unit = new JLabel();
         unit.setText("Unit Price: "+unitprice +" tk");
         unit.setFont(new Font("Arial",Font.BOLD,18));
         unit.setBounds(30,120,160,50);
-        unit.setOpaque(true);
+        //unit.setOpaque(true);
 
         total = new JLabel();
         total.setFont(new Font("Arial",Font.BOLD,18));
         total.setBounds(30,190,160,50);
-        total.setOpaque(true);
+        //total.setOpaque(true);
 
         ticketNumber = new JTextField();
         ticketNumber.setBounds(10,190,100,30);
@@ -74,7 +74,7 @@ public class TicketingPortal extends JFrame implements ActionListener {
         destin = new JLabel();
         destin.setText("To: \n"+destination);
         destin.setFont(new Font("Arial",Font.BOLD,20));
-        destin.setBounds(30,120,100,50);
+        destin.setBounds(30,120,150,50);
 
         next = new JButton("Next");
         next.addActionListener(this);
@@ -83,12 +83,12 @@ public class TicketingPortal extends JFrame implements ActionListener {
         panel1 = new JPanel();
         panel1.setBounds(30,70,230,350);
         panel1.setLayout(null);
-        panel1.setBackground(Color.CYAN);
+        //panel1.setBackground(Color.CYAN);
 
         panel2 = new JPanel();
         panel2.setBounds(285,70,230,350);
         panel2.setLayout(null);
-        panel2.setBackground(Color.CYAN);
+        //panel2.setBackground(Color.CYAN);
 
         panel3 = new JPanel();
         panel3.setBounds(530,70,230,350);
@@ -100,19 +100,20 @@ public class TicketingPortal extends JFrame implements ActionListener {
         personal.setText("Personal Details");
         personal.setFont(new Font("Arial",Font.BOLD,20));
         personal.setBounds(30,10,160,30);
-        personal.setOpaque(true);
+        //personal.setOpaque(true);
 
         ticket = new JLabel();
         ticket.setText("Ticket Amount");
         ticket.setFont(new Font("Arial",Font.BOLD,20));
         ticket.setBounds(30,10,160,30);
-        ticket.setOpaque(true);
+        //ticket.setOpaque(true);
 
         price = new JLabel();
         price.setText("Purchase");
+        price.setForeground(Color.white);
         price.setFont(new Font("Arial",Font.BOLD,20));
         price.setBounds(50,10,130,30);
-        price.setOpaque(true);
+        //price.setOpaque(true);
 
 
         panel1.add(personal);

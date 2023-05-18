@@ -16,7 +16,7 @@ public class TicketingPortal extends JFrame implements ActionListener {
     JPanel panel1,panel2,panel3;
     JLabel personal,ticket,price , iLocation,destin , unit,total;
     JTextField ticketNumber;
-    JButton plus,minus,next,confirm;
+    JButton plus,minus,next,confirm,dashboard;
     int ticketCount = 0 ,unitprice = 20 , totalCost;
 
 
@@ -70,6 +70,12 @@ public class TicketingPortal extends JFrame implements ActionListener {
         confirm = new JButton("Confirm");
         confirm.addActionListener(this);
         confirm.setBounds(60,260,90,30);
+
+        dashboard = new JButton("dashboard");
+        dashboard.addActionListener(this);
+        dashboard.setVisible(false);
+        dashboard.setEnabled(false);
+        dashboard.setBounds(230,380,110,30);
 
         destin = new JLabel();
         destin.setText("To: \n"+destination);
@@ -132,9 +138,12 @@ public class TicketingPortal extends JFrame implements ActionListener {
         panel3.add(total);
         panel3.add(confirm);
 
+
+        add(dashboard);
         add(panel1);
         add(panel2);
         add(panel3);
+
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Ticketing Portal");
@@ -170,11 +179,13 @@ public class TicketingPortal extends JFrame implements ActionListener {
             total.setText("total Price: "+totalCost +" tk");
             plus.setEnabled(false);
             minus.setEnabled(false);
+            next.setEnabled(false);
             ticketNumber.setEnabled(false);
             panel3.setVisible(true);
 
         }
         if (e.getSource()==confirm){
+            confirm.setEnabled(false);
             FileDialog fd = new FileDialog(this,"save",FileDialog.SAVE);
             fd.setVisible(true);
 
@@ -191,6 +202,12 @@ public class TicketingPortal extends JFrame implements ActionListener {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
+            dashboard.setVisible(true);
+            dashboard.setEnabled(true);
+        }
+        if (e.getSource()==dashboard){
+            setVisible(false);
+            new Dashboard(user);
         }
     }
 }
